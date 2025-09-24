@@ -51,7 +51,7 @@
 
   #karen {
     width:320px;
-    border-radius:220px;
+    border-radius:80px;
     border:2px solid rgba(0,255,170,0.08);
   }
 
@@ -82,7 +82,7 @@
 
   #plankton {
     width:350px;
-    margin-top:300px;
+    margin-top:30px;
     border-radius:8px;
   }
 
@@ -242,7 +242,7 @@ function makeFinalGuess(){
     return;
   }
   finalGuess = candidates[0];
-  setQuestion("Plankton: It Must be"+finalGuess.symbol+"!");
+  setQuestion("Plankton: It Must be "+finalGuess.symbol+"!");
   resultEl.textContent="Is this correct?";
   planktonStatic.classList.add('hidden');
   confirmGuessBtn.classList.remove('hidden');
@@ -309,6 +309,7 @@ window.addEventListener('load',startGame);
 </script>
 </body>
 </html>
+
 
 
 
