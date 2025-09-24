@@ -30,8 +30,8 @@
   .ptable-side h2{margin:0;color:#7fffd4}
   .ptable-side img {
     width:100%;
-    max-width:520px;
-    border-radius:8px;
+    max-width:600px;
+    border-radius:10px;
     border:2px solid rgba(0,255,170,0.08);
     box-shadow:0 10px 30px rgba(0,0,0,0.6);
   }
@@ -50,8 +50,8 @@
   }
 
   #karen {
-    width:320px;
-    border-radius:80px;
+    width:360px;
+    border-radius:120px;
     border:2px solid rgba(0,255,170,0.08);
   }
 
@@ -81,8 +81,8 @@
   #result { font-size:1.15rem; margin-top:6px; min-height:28px; text-align:center; color:#e6ffe9; }
 
   #plankton {
-    width:260px;
-    margin-top:30px;
+    width:460px;
+    margin-top:50px;
     border-radius:8px;
   }
 
@@ -142,7 +142,7 @@
   <button id="confirmGuess" class="hidden btn">Yes, this is correct!</button>
   <button id="denyGuess" class="hidden btn">No, that's wrong!</button>
 
-  <button id="playAgain">Play Again</button>
+  <button id="playAgain">Restart</button>
 </div>
 
 <video id="planktonVideo" controls></video>
@@ -174,18 +174,18 @@ const ELEMENTS = [
 
 // Question logic
 const QUESTIONS = [
-  { text: "Is it an alkali metal (Group 1)?", test: e => e.family==="alkali" },
+  { text: "Is it an alkali metal?", test: e => e.family==="alkali" },
   { text: "Is it a transition metal (d-block)?", test: e => e.family==="transition" },
-  { text: "Is it a halogen (Group 17)?", test: e => e.family==="halogen" },
-  { text: "Is it a noble gas (Group 18)?", test: e => e.family==="noble" },
-  { text: "Is it a lanthanide (f-block, Period 6)?", test: e => e.family==="lanthanide" },
-  { text: "Is it an actinide (f-block, Period 7)?", test: e => e.family==="actinide" },
-  { text: "Is it in Period 2?", test: e => e.period===2 },
-  { text: "Is it in Period 3?", test: e => e.period===3 },
-  { text: "Is it in Period 4?", test: e => e.period===4 },
-  { text: "Is it in Period 5?", test: e => e.period===5 },
-  { text: "Is it in Period 6?", test: e => e.period===6 },
-  { text: "Is it in Period 7?", test: e => e.period===7 }
+  { text: "Is it a halogen?", test: e => e.family==="halogen" },
+  { text: "Is it a noble gas?", test: e => e.family==="noble" },
+  { text: "Is it a lanthanide?", test: e => e.family==="lanthanide" },
+  { text: "Is it an actinide?", test: e => e.family==="actinide" },
+  { text: "Does it have 2 electron shells?", test: e => e.period===2 },
+  { text: "Does it have 3 electron shells", test: e => e.period===3 },
+  { text: "Does it have 4 electron shells?", test: e => e.period===4 },
+  { text: "Does it have 5 electron shells?", test: e => e.period===5 },
+  { text: "Does it have 6 electron shells", test: e => e.period===6 },
+  { text: "Does it have 7 electron shells?", test: e => e.period===7 }
 ];
 
 let candidates = [];
@@ -242,7 +242,7 @@ function makeFinalGuess(){
     return;
   }
   finalGuess = candidates[0];
-  setQuestion("Plankton: I think it's "+finalGuess.symbol+"!");
+  setQuestion("Plankton: It Must be"+finalGuess.symbol+"!");
   resultEl.textContent="Is this correct?";
   planktonStatic.classList.add('hidden');
   confirmGuessBtn.classList.remove('hidden');
@@ -253,7 +253,7 @@ function makeFinalGuess(){
 function confirmGuess(){
   confirmGuessBtn.classList.add('hidden');
   denyGuessBtn.classList.add('hidden');
-  resultEl.textContent="Plankton guessed correctly!";
+  resultEl.textContent="Plankton found out the secret formula";
   showVideo("planktonyes.mp4");
 }
 
@@ -261,7 +261,7 @@ function confirmGuess(){
 function denyGuess(){
   confirmGuessBtn.classList.add('hidden');
   denyGuessBtn.classList.add('hidden');
-  resultEl.textContent="Plankton guessed wrong!";
+  resultEl.textContent="Plankton failed to guess the secret formula";
   showVideo("PlanktonScream.mp4");
 }
 
@@ -278,8 +278,8 @@ function showVideo(src){
 
 // Fail sequence (no candidates)
 function failSequence(){
-  setQuestion("Plankton: Curses! I can't be certain.");
-  resultEl.textContent="Plankton failed to guess.";
+  setQuestion("Plankton: Curses!");
+  resultEl.textContent="Plankton failed to guess the secret element in the secret krabby patty formula";
   planktonStatic.classList.add('hidden');
   showVideo("PlanktonScream.mp4");
 }
@@ -309,5 +309,6 @@ window.addEventListener('load',startGame);
 </script>
 </body>
 </html>
+
 
 
